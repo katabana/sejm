@@ -18,19 +18,15 @@ import java.io.IOException;
  * more
  */
     //TODO: cleaning arguments: name - delete spaces
-    //TODO: change expeditions -> trips
-    //TODO: expeditions - how? hashmap like deputies? no idea
+
 public class Main {
 
     public static void main(String args[]){
 
         try {
-            ReadFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie.json");
-            JSONObject obj = ReadFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie.json");
-            JSONArray root = (JSONArray) obj.get("Dataobject");
 
             Deputies deputies = new Deputies(8);
-            //deputies.getDeputyMostAbroadExpeditions(7);
+            //deputies.getDeputyMostAbroadTrips(7);
             //deputies.getDeputyMostTimeAbroad(7);
             //deputies.deputiesBeenInItaly(7);
             deputies.getDeputyMostExpensiveTrip(7);

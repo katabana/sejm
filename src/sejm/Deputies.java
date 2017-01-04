@@ -1,13 +1,11 @@
 package sejm;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
 
@@ -93,7 +91,7 @@ public class Deputies {
     }
 
     //TODO: in general are there trips from 8th term?
-    public int getDeputyMostAbroadExpeditions(int termNo) throws ParseException, IOException {
+    public int getDeputyMostAbroadTrips(int termNo) throws ParseException, IOException {
 
         int expeditions = 0;
         int id = 0;
@@ -148,8 +146,8 @@ public class Deputies {
             /*
             if(term.contains(Integer.toString(7))) {
                 amount = Integer.parseInt(data.get("poslowie.liczba_wyjazdow").toString());
-                if (amount > expeditions) {
-                    expeditions = amount;
+                if (amount > trips) {
+                    trips = amount;
                     id = deputyID;
                 }
             } */

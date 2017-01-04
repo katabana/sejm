@@ -3,7 +3,6 @@ package sejm;
 import java.io.*;
 import java.net.*;
 import java.nio.charset.Charset;
-import java.util.Iterator;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -26,17 +25,10 @@ public class ReadFromURL {
         return sb.toString();
     }
 
-    private static String cleanURL(String url) {
-        String newurl = "";
-        for (int i = 0; i < url.length(); i++) {
-            if(url.charAt(i)!= '\\')
-                newurl += url.charAt(i);
-        }
-        return newurl;
-    }
 
     public static JSONObject readJsonFromUrl(String url) throws IOException, ParseException {
-        url = cleanURL(url);
+        //repairs url as it contains '\' before '/'
+        url.replace("\\", "");
         InputStream is = new URL(url).openStream();
         try {
             JSONParser parser = new JSONParser();
