@@ -1,0 +1,64 @@
+﻿czy wystarczy przejrzeć te na końcu i zsumować?
+
+{"id":"174","dataset":,"data":{
+"ludzie.id":"162",
+"poslowie.wartosc_biuro_inne":2115.78,
+"poslowie.wartosc_biuro_ekspertyzy":0,
+"poslowie.wartosc_biuro_materialy_biurowe":4289.64,
+"poslowie.wartosc_biuro_taksowki":0,
+"poslowie.liczba_przelotow":51,
+"poslowie.wartosc_biuro_zlecenia":13708.58,
+"poslowie.liczba_projektow_uchwal":32,
+"poslowie.imiona":"S\u0142awomir",
+"poslowie.biuro_html": 
+	"http:\/\/orka.sejm.gov.pl\/rozlicz7.nsf\/lista\/2011161\/$File\/2011ryczalt_161.pdf" 2011 rok
+	"http:\/\/orka.sejm.gov.pl\/rozlicz7.nsf\/lista\/2012161\/$File\/2012ryczalt_161.pdf" 2012 rok
+	"http:\/\/orka.sejm.gov.pl\/rozlicz7.nsf\/lista\/2013161\/$File\/2013ryczalt_161.pdf" 2013 rok
+	"http:\/\/orka.sejm.gov.pl\/rozlicz7.nsf\/lista\/2014161\/$File\/2014ryczalt_161.pdf" 2014 rok
+	"http:\/\/orka.sejm.gov.pl\/rozlicz7.nsf\/lista\/2015161\/$File\/2015ryczalt_161.pdf" ,
+"poslowie.wartosc_biuro_wynagrodzenia_pracownikow":49159.18,
+"poslowie.numer_legitymacji":161,
+"poslowie.wartosc_uposazenia_pln":9892.3,
+"poslowie.kadencja_ostatnia":"8",
+"poslowie.wartosc_biuro_spotkania":0,
+"poslowie.wartosc_wyjazdow":0,
+"poslowie.wartosc_biuro_przejazdy":35103.6,
+"poslowie.kadencja":[7,8],
+"poslowie.id":"174",
+"poslowie.wartosc_refundacja_kwater_pln":0,
+"poslowie.wartosc_biuro_telekomunikacja":5426.2,
+"poslowie.wartosc_biuro_biuro":24024.64,
+"poslowie.wartosc_biuro_podroze_pracownikow":35.1,
+"poslowie.liczba_przejazdow":54,
+"poslowie.rozliczenie_id":"274667",
+"poslowie.liczba_wyjazdow":0,
+"poslowie.wartosc_biuro_srodki_trwale":399},
+"layers":{"dataset":null,"channels":null,"page":null,"subscribers":null,
+"wydatki":{"liczba_pol":20,"liczba_rocznikow":2,
+"punkty":[{"tytul":
+"Wydatki na wynagrodzenia pracownik\u00f3w biura poselskiego zatrudnionych na podstawie umowy o prac\u0119 wraz z pochodnymi","numer":"1"},
+{"tytul":"Koszty bada\u0144 lekarskich i szkole\u0144 pracownik\u00f3w zatrudnionych w biurze poselskim na podstawie umowy o prac\u0119","numer":"2"},
+{"tytul":"Wydatki na wynagrodzenia wyp\u0142acane na podstawie zawartych przez pos\u0142a um\u00f3w zlece\u0144 i o dzie\u0142o wraz z pochodnymi","numer":"3"},
+{"tytul":"Koszty ekspertyz, opinii, t\u0142umacze\u0144","numer":"4"},
+{"tytul":"Koszty us\u0142ug telekomunikacyjnych zwi\u0105zanych z wykonaniem mandatu poselskiego (nie obejmuj\u0105 koszt\u00f3w us\u0142ug telekomunikacyjnych w \"Domu Poselskim\" oraz w kwaterach prywatnych w Warszawie, potr\u0105canych przez Kancelari\u0119 Sejmu z rycza\u0142tu na biuro poselskie)","numer":"5"},
+{"tytul":"Koszty us\u0142ug telekomunikacyjnych w \"Domu Poselskim\" oraz w kwaterach prywatnych w Warszawie, potr\u0105canych przez Kancelari\u0119 Sejmu z rycza\u0142tu na biuro poselskie","numer":"6"},
+{"tytul":"Koszty korespondencji i og\u0142osze\u0144","numer":"7"},
+{"tytul":"Koszty wynajmowania sal na spotkania z wyborcami","numer":"8"},
+{"tytul":"Koszty przejazd\u00f3w pos\u0142a w zwi\u0105zku z wykonaniem mandatu poselskiego samochodem w\u0142asnym lub innym","numer":"9"},
+{"tytul":"Koszty przejazd\u00f3w pos\u0142a w zwi\u0105zku z wykonywaniem mandatu poselskiego taks\u00f3wkami","numer":"10"},
+{"tytul":"Koszty najmu lokalu biura poselskiego, w tym: czynsz, op\u0142aty za energi\u0119 elektryczn\u0105 i ciepln\u0105, gaz, wod\u0119, wyw\u00f3z \u015bmieci, podatki i op\u0142aty lokalne","numer":"11"},
+{"tytul":"Koszty konserwacji i naprawy sprz\u0119tu technicznego biura poselskiego oraz koszty jego eksploatacji","numer":"12"},
+{"tytul":"Koszty drobnych napraw i remont\u00f3w lokalu biura poselskiego","numer":"13"},
+{"tytul":"Zakup materia\u0142\u00f3w biurowych, prasy, wydawnictw, \u015brodk\u00f3w bhp itp.","numer":"14"},
+{"tytul":"Zakup \u015brodk\u00f3w trwalych o charakterze wyposa\u017cenia*","numer":"15"},
+{"tytul":"Koszty podr\u00f3\u017cy s\u0142u\u017cbowych pracownik\u00f3w biura poselskiego, zatrudnionych na podstawie umowy o prac\u0119","numer":"16"},
+{"tytul":"Odpis na fundusz \u015bwiadcze\u0144 socjalnych","numer":"17"},
+{"tytul":"\u015awiadczenia urlopowe wyp\u0142acane pracownikom biura poselskiego, zatrudnionych na podstawie umowy o prac\u0119","numer":"18"},
+{"tytul":"Koszty obs\u0142ugi rachunkowo-ksi\u0119gowej i bankowej biura poselskiego","numer":"19"},
+{"tytul":"Inne wydatki zwi\u0105zane z prowadzeniem biura poselskiego (og\u00f3\u0142em)","numer":"20"}],
+"roczniki":[
+	{"pola":["49159.18","0.00","13708.58","0.00","5338.10","88.10","326.50","0.00","35103.60","0.00","10418.86","584.89","2170.09","4289.64","399.00","35.10","0.00","0.00","10524.30","2115.78"],
+	"dokument_id":"451979","rok":"2013"},
+	{"pola":["41874.93","270.00","23264.89","0.00","5036.72","136.36","1014.13","370.00","31400.27","180.81","10742.13","1066.39","6248.33","6985.04","1806.39","92.00","0.00","0.00","9682.43","2629.10"],
+	"dokument_id":"365778","rok":"2012"}]
+}},"Aggs":{"_page":{"doc_count":0,"page":{"hits":{"total":0,"max_score":null,"hits":[]}}}}}

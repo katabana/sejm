@@ -1,0 +1,157 @@
+//might be some useful code
+
+//JSONParser parser = new JSONParser();
+        /*
+        try {
+
+            //JSONParser parser = new JSONParser();
+            //FileReader file = new FileReader("C:\\Users\\Kasia\\Java\\sejm\\documents\\poslowie.json");
+
+            Object obj = parser.parse(new FileReader("C:\\Users\\Kasia\\Java\\sejm\\documents\\poslowie.json"));
+            String s = obj.toString();
+
+            JSONObject jsonObject = (JSONObject) obj;
+            JSONArray root = (JSONArray) jsonObject.get("Dataobject");
+            //System.out.println(root);
+            JSONObject pierwszy = (JSONObject) root.get(0);
+            pierwszy = (JSONObject) pierwszy.get("data");
+            System.out.println(pierwszy.toString());
+            System.out.println(pierwszy.get("poslowie.id"));
+            System.out.println(pierwszy.get("poslowie.kadencja"));
+            //System.out.println(root.toString());
+            //JSONObject json = (JSONObject) root;
+            //String id = (String) json.get("id");
+
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } catch (ParseException e) {
+            System.out.println(e.getMessage());
+        } */
+
+
+package sejm;
+
+import org.json.simple.JSONObject;
+
+import java.util.ArrayList;
+
+/**
+ * Created by Kasia on 2016-12-17.
+ */
+
+public class Deputy {
+    private String name;
+    private int deputyID;
+    private int projectsOfActs;      //poslowie.liczba_projektow_ustaw
+    private int projectsOfResolutions;     //poslowie.liczba_projektow_uchwal
+    private String region;          //the same as sejm_okreg_ID
+    private int subcommittees;
+    private int requests;
+    private int officeTangibleAssets;
+    private int interpellations;
+    private int constituencyNumber;
+    private int votingsAbandoned;
+    private int actsByEthicsCommittee;
+    private int votings;
+    private float frequency;
+    private int votingInsurgencies;
+    private int clubID;
+    private String clubName;
+    private int expeditions;
+    private float expeditionsValue;
+    private float wage;
+    private int pkwCommitteeID;
+    private int flights;
+    private String deputyCardID;
+    private int rides;
+    private float officeTelecommunication;
+    private float officeEmployeesSalaries;
+    private int speakerID;
+    private String clubAbbrv;
+    private int speeches;
+    private int officeExpertOpinions;
+    private String sex;         //or gender? :)
+    private int krsID;
+    private float officeOrders;     //liczba zlecen biura
+    private int committees;
+    private float officeEmployeesExpeditions;
+    private int lastParliamentTerm;
+    private String twitterID;
+    private float officeTaxiSpendings;
+    private float accommodationRefund;
+    private float officeValue;
+    private float settlementID;  //rozliczenie_id
+    private float words;
+    private float officeSupplies;
+    private float officeMeetings;
+    private float officeValueOther;
+    private float officeRides;
+    private String occupation;
+    ArrayList<Integer> terms;   //kadencje
+
+
+    //ommitted: poslowie.data_urodzenia, poslowie.numer_na_liscie, ludzie.slug, poslowie.miejsce_urodzenia
+    //poslowie.dopelniacz, poslowie.nazwa, poslowie.miejsce_zamieszkania, poslowie.procent_glosow, linki rozliczen
+
+    //TODO: right types -> toInt etc.
+    public Deputy(JSONObject d){
+        this.name = d.get("ludzie.nazwa").toString();
+        this.deputyID = Integer.parseInt(d.get("poslowie.id").toString());
+        this.projectsOfActs = Integer.parseInt(d.get("poslowie.liczba_projektow_ustaw").toString());
+        this.projectsOfResolutions = Integer.parseInt(d.get("poslowie.liczba_projektow_uchwal").toString());
+        this.region = d.get("poslowie.okreg_gminy_str").toString();
+        this.subcommittees = Integer.parseInt(d.get("poslowie.liczba_podkomisji").toString());
+        this.requests = Integer.parseInt(d.get("poslowie.liczba_wnioskow").toString());
+        this.officeTangibleAssets = Integer.parseInt(d.get("poslowie.wartosc_biuro_srodki_trwale").toString());
+        this.interpellations = Integer.parseInt(d.get("poslowie.liczba_interpelacji").toString());
+        this.constituencyNumber = Integer.parseInt(d.get("poslowie.okreg_wyborczy_numer").toString());
+        this.votingsAbandoned = Integer.parseInt(d.get("poslowie.liczba_glosowan_opuszczonych").toString());
+        this.actsByEthicsCommittee = Integer.parseInt(d.get("poslowie.liczba_uchwal_komisji_etyki").toString());
+        this.votings = Integer.parseInt(d.get("poslowie.liczba_glosowan").toString());
+        this.frequency = Float.parseFloat(d.get("poslowie.frekwencja").toString());
+        this.votingInsurgencies = Integer.parseInt(d.get("poslowie.liczba_glosowan_zbuntowanych").toString());
+        this.clubID = Integer.parseInt(d.get("poslowie.klub_id").toString());
+        this.clubName = d.get("sejm_kluby.nazwa").toString();
+        this.expeditions = Integer.parseInt(d.get("poslowie.liczba_wyjazdow").toString());
+        this.expeditionsValue = Float.parseFloat(d.get("poslowie.wartosc_wyjazdow").toString());
+        this.wage = Float.parseFloat(d.get("poslowie.wartosc_uposazenia_pln").toString());
+        this.pkwCommitteeID = Integer.parseInt(d.get("poslowie.pkw_komitet_id").toString());
+        this.flights = Integer.parseInt(d.get("poslowie.liczba_przelotow").toString());
+        this.deputyCardID = d.get("poslowie.numer_legitymacji").toString();
+        this.rides = Integer.parseInt(d.get("poslowie.liczba_przejazdow").toString());
+        this.officeTelecommunication = Float.parseFloat(d.get("poslowie.wartosc_biuro_telekomunikacja").toString());
+        this.officeEmployeesSalaries = Float.parseFloat(d.get("poslowie.wartosc_biuro_wynagrodzenia_pracownikow").toString());
+        this.speakerID = Integer.parseInt(d.get("poslowie.mowca_id").toString());
+        this.clubAbbrv = d.get("sejm_kluby.skrot").toString();
+        this.speeches = Integer.parseInt(d.get("poslowie.liczba_wypowiedzi").toString());
+        this.officeExpertOpinions = Integer.parseInt(d.get("poslowie.wartosc_biuro_ekspertyzy").toString());
+        this.sex = d.get("poslowie.plec").toString();
+        this.krsID = Integer.parseInt(d.get("poslowie.krs_osoba_id").toString());
+        this.officeOrders = Float.parseFloat(d.get("poslowie.wartosc_biuro_zlecenia").toString());
+        this.committees = Integer.parseInt(d.get("poslowie.liczba_komisji").toString());
+        this.officeEmployeesExpeditions = Float.parseFloat(d.get("poslowie.wartosc_biuro_podroze_pracownikow").toString());
+        this.lastParliamentTerm = Integer.getInteger(d.get("poslowie.kadencja_ostatnia").toString());
+        this.twitterID = d.get("poslowie.twitter_account_id").toString();
+        this.officeTaxiSpendings = Float.parseFloat(d.get("poslowie.wartosc_biuro_taksowki").toString());
+        this.accommodationRefund = Float.parseFloat(d.get("poslowie.wartosc_refundacja_kwater_pln").toString());
+        this.officeValue = Float.parseFloat(d.get("poslowie.wartosc_biuro_biuro").toString());
+        this.settlementID = Integer.parseInt(d.get("poslowie.rozliczenie_id").toString());
+        this.words = Integer.parseInt(d.get("poslowie.liczba_slow").toString());
+        this.officeSupplies = Float.parseFloat(d.get("poslowie.wartosc_biuro_materialy_biurowe").toString());
+        this.officeMeetings = Float.parseFloat(d.get("poslowie.wartosc_biuro_spotkania").toString());
+        this.officeValueOther = Float.parseFloat(d.get("poslowie.wartosc_biuro_inne").toString());
+        this.officeRides = Float.parseFloat(d.get("poslowie.wartosc_biuro_przejazdy").toString());
+        this.occupation = d.get("poslowie.zawod").toString();
+        //this.terms = d.get("poslowie.kadencja");
+
+
+    }
+
+    public Deputy get(){
+        return this;
+    }
+
+}
