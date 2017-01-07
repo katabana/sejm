@@ -1,6 +1,7 @@
 package sejm;
 
 import org.apache.commons.lang3.text.WordUtils;
+import org.json.simple.JSONObject;
 
 /**
  * Created by Katabana on 2017-01-07.
@@ -21,7 +22,7 @@ public class ArgsParser {
             return "Not enough arguments";
         }
         int term = Integer.parseInt(args[0]);
-        if(!rightTerm(term))
+        if(!validTerm(term))
             return (term+" is a wrong term number. Choose 7 or 8.");
 
         String option = args[1];
@@ -39,8 +40,14 @@ public class ArgsParser {
     }
 
     //Because there is only 7th and 8th term yet
-    private static boolean rightTerm(int n){
+    private static boolean validTerm(int n){
         return (n == 7 || n == 8);
+    }
+
+    public static boolean rightTerm(JSONObject obj, int termNo){
+        JSONObject data = (JSONObject) obj.get("data");
+        String term = data.get("poslowie.kadencja").toString();
+        return term.contains(Integer.toString(termNo));
     }
 
     //List of options in string
