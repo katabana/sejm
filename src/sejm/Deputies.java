@@ -71,11 +71,9 @@ public class Deputies {
         float sum = 0;
         int records = 0;
         for(int id : this.deputies.keySet()){
-            JSONObject obj = ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+id+".json?layers[]=wydatki");
-            JSONObject data = (JSONObject) obj.get("data");
+            JSONObject obj = ReaderFromURL.readExpensesFromUrl(id);
 
-            String term = data.get("poslowie.kadencja").toString();
-            if(term.contains(Integer.toString(termNo))) {
+            if(rightTerm(obj, termNo)) {
                 records++;
                 obj = (JSONObject) obj.get("layers");
                 obj = (JSONObject) obj.get("wydatki");
@@ -101,11 +99,10 @@ public class Deputies {
         int amount = 0;
         String[] result = new String[2];
         for(int deputyID : this.deputies.keySet()){
-            JSONObject obj = ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+deputyID+".json?layers[]=wyjazdy");
+            JSONObject obj = ReaderFromURL.readTripsFromUrl(deputyID);
             JSONObject data = (JSONObject) obj.get("data");
 
-            String term = data.get("poslowie.kadencja").toString();
-            if(term.contains(Integer.toString(termNo))) {
+            if(rightTerm(obj, termNo)) {
                 amount = Integer.parseInt(data.get("poslowie.liczba_wyjazdow").toString());
                 if (amount > expeditions) {
                     expeditions = amount;
@@ -124,11 +121,10 @@ public class Deputies {
         String[] result = new String[2];
         for(int deputyID : this.deputies.keySet()){
             int time = 0;
-            JSONObject obj = ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+deputyID+".json?layers[]=wyjazdy");
+            JSONObject obj = ReaderFromURL.readTripsFromUrl(deputyID);
             JSONObject data = (JSONObject) obj.get("data");
 
-            String term = data.get("poslowie.kadencja").toString();
-            if(term.contains(Integer.toString(termNo))) {
+            if(rightTerm(obj, termNo)) {
                 int tripsNumber = Integer.parseInt(data.get("poslowie.liczba_wyjazdow").toString());
 
                 obj = (JSONObject) obj.get("layers");
@@ -161,11 +157,10 @@ public class Deputies {
 
         for(int deputyID : this.deputies.keySet()){
             float expenditures = 0;
-            JSONObject obj = ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+deputyID+".json?layers[]=wyjazdy");
+            JSONObject obj = ReaderFromURL.readTripsFromUrl(deputyID);
             JSONObject data = (JSONObject) obj.get("data");
 
-            String term = data.get("poslowie.kadencja").toString();
-            if(term.contains(Integer.toString(termNo))) {
+            if(rightTerm(obj, termNo)) {
                 int tripsNumber = Integer.parseInt(data.get("poslowie.liczba_wyjazdow").toString());
 
                 obj = (JSONObject) obj.get("layers");
@@ -174,8 +169,11 @@ public class Deputies {
                     JSONArray wyjazdy = (JSONArray) obj.get("wyjazdy");
                     for (int i = 0; i < wyjazdy.size(); i++) {
                         JSONObject singleTrip = (JSONObject) wyjazdy.get(i);
-                        if (singleTrip != null)
-                            expenditures += Float.parseFloat(singleTrip.get("koszt_suma").toString());
+                        if (singleTrip != null) {
+                            float exp = Float.parseFloat(singleTrip.get("koszt_suma").toString());
+                            if(exp > expenditures)
+                                expenditures = exp;
+                        }
                     }
                 }
                 if (expenditures > expendituresMax) {
@@ -194,11 +192,10 @@ public class Deputies {
     public ArrayList<String> deputiesBeenInItaly(int termNo) throws ParseException, IOException {
         ArrayList<String> deputiesList = new ArrayList<>();
         for(int deputyID : this.deputies.keySet()) {
-            JSONObject obj = ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+deputyID+".json?layers[]=wyjazdy");
+            JSONObject obj = ReaderFromURL.readTripsFromUrl(deputyID);
             JSONObject data = (JSONObject) obj.get("data");
 
-            String term = data.get("poslowie.kadencja").toString();
-            if(term.contains(Integer.toString(termNo))) {
+            if(rightTerm(obj, termNo)) {
                 int tripsNumber = Integer.parseInt(data.get("poslowie.liczba_wyjazdow").toString());
 
                 obj = (JSONObject) obj.get("layers");
@@ -220,6 +217,12 @@ public class Deputies {
             }
         }
         return deputiesList;
+    }
+
+    private boolean rightTerm(JSONObject obj, int termNo){
+        JSONObject data = (JSONObject) obj.get("data");
+        String term = data.get("poslowie.kadencja").toString();
+        return term.contains(Integer.toString(termNo));
     }
 
 }

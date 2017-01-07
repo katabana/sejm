@@ -28,7 +28,7 @@ public class Main {
                 System.out.println(m);
                 return ;
             }
-            OptionsParser op = new OptionsParser(args);
+            OptionsParser op = new OptionsParser(ArgsParser.parseArgs(args));
             op.parseOptions();
 
             //deputies.printDeputies();
@@ -38,20 +38,10 @@ public class Main {
             //deputies.getDeputyMostExpensiveTrip(7);
 
             //wydatki posla
-
             //int deputyID = deputies.getID("Ma?gorzata Wypych");
             //int deputyID = deputies.getID("Jan Dziedziczak");
-            //int deputyID = deputies.getID("Tadeusz Iwi?ski");
             //System.out.println(deputyID);
-            /*
-            if (deputyID >= 0) {
-                System.out.println(deputyID);
-                float spent = Deputy.getSpendings(deputyID, 7);
-                System.out.println(spent);
-            }
-            else
-                System.out.println("No such deputy.");
-            */
+
         } catch (ParseException e) {
             System.out.println(e.getMessage());
         } catch (IOException e) {

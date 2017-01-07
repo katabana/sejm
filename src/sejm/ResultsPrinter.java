@@ -12,27 +12,27 @@ public class ResultsPrinter {
     private String[] results;
     private ArrayList<String> list;
 
-    public ResultsPrinter(String option, String deputy, float result){
+    public ResultsPrinter(int termNo, String option, String deputy, float result){
         this.option = option;
         this.deputy = deputy;
         this.sum = result;
-        this.printResults();
+        this.printResults(termNo);
     }
-    public ResultsPrinter(String option, float result) {
+    public ResultsPrinter(int termNo, String option, float result) {
         this.option = option;
         this.sum = result;
-        this.printResults();
+        this.printResults(termNo);
     }
 
-    public ResultsPrinter(String option, String[] result){
+    public ResultsPrinter(int termNo, String option, String[] result){
         this.option = option;
         this.results = result;
-        this.printResults();
+        this.printResults(termNo);
     }
-    public ResultsPrinter(String option, ArrayList<String> list) {
+    public ResultsPrinter(int termNo, String option, ArrayList<String> list) {
         this.option = option;
         this.list = list;
-        this.printResults();
+        this.printResults(termNo);
     }
     public ResultsPrinter(int termNo, String name){
         this.printResults(termNo, name);
@@ -41,7 +41,7 @@ public class ResultsPrinter {
     private void printResults(int termNo, String name){
         System.out.println("There is no such deputy "+name+" in "+termNo+"th term.");
     }
-    private void printResults(){
+    private void printResults(int termNo){
         switch (this.option){
             case "a":
                 System.out.println("Sum of expenses of "+this.deputy+" is "+this.sum+".");
@@ -56,10 +56,10 @@ public class ResultsPrinter {
                 System.out.println("Most foreign trips "+this.results[1]+" had deputy "+this.results[0]);
                 break;
             case "e":
-                System.out.println("Deputy "+this.results[0]+" spend most time "+this.results[1]+" days abroad.");
+                System.out.println("Deputy "+this.results[0]+" from "+termNo+"th term spend most time "+this.results[1]+" days abroad.");
                 break;
             case "f":
-                System.out.println("Deputy "+this.results[0]+" had the most expensive abroad trip which cost was "+this.results[1]+" z³.");
+                System.out.println("Deputy "+this.results[0]+" from "+termNo+"th term had the most expensive abroad trip which cost was "+this.results[1]+" z³.");
                 break;
             case "g":
                 System.out.println("Deputies who has been to Italy: ");

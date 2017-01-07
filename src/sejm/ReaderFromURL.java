@@ -43,4 +43,12 @@ public class ReaderFromURL {
             is.close();
         }
     }
+
+    public static JSONObject readExpensesFromUrl(int id) throws IOException, ParseException {
+        return ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+id+".json?layers[]=wydatki");
+    }
+
+    public static JSONObject readTripsFromUrl(int id) throws IOException, ParseException {
+        return ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+id+".json?layers[]=wyjazdy");
+    }
 }

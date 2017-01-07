@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d06a712c-34c5-4635-9876-41c08a5e9f3b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/sejm/sejm/ArgsParser.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/sejm/sejm/Deputies.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/sejm/sejm/Deputy.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/sejm/sejm/Main.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/sejm/sejm/OptionsParser.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/sejm/sejm/ReaderFromURL.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/sejm/sejm/ResultsPrinter.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/sejm/sejm/Deputies.class" afterPath="$PROJECT_DIR$/out/production/sejm/sejm/Deputies.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/sejm/sejm/Deputy.class" afterPath="$PROJECT_DIR$/out/production/sejm/sejm/Deputy.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/sejm/sejm/Main.class" afterPath="$PROJECT_DIR$/out/production/sejm/sejm/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/sejm/sejm/OptionsParser.class" afterPath="$PROJECT_DIR$/out/production/sejm/sejm/OptionsParser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/sejm/sejm/ReaderFromURL.class" afterPath="$PROJECT_DIR$/out/production/sejm/sejm/ReaderFromURL.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/sejm/sejm/ResultsPrinter.class" afterPath="$PROJECT_DIR$/out/production/sejm/sejm/ResultsPrinter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sejm.iml" afterPath="$PROJECT_DIR$/sejm.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sejm/ArgsParser.java" afterPath="$PROJECT_DIR$/src/sejm/ArgsParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sejm/Deputies.java" afterPath="$PROJECT_DIR$/src/sejm/Deputies.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sejm/Deputy.java" afterPath="$PROJECT_DIR$/src/sejm/Deputy.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sejm/Main.java" afterPath="$PROJECT_DIR$/src/sejm/Main.java" />
@@ -43,8 +38,8 @@
       <file leaf-file-name="ReaderFromURL.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sejm/ReaderFromURL.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-66">
-              <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+            <state relative-caret-position="504">
+              <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -55,8 +50,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sejm/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-252">
-              <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+            <state relative-caret-position="276">
+              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,21 +59,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArgsParser.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ArgsParser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sejm/ArgsParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="49" column="23" lean-forward="false" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
+            <state relative-caret-position="270">
+              <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Deputies.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Deputies.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sejm/Deputies.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="20" column="68" lean-forward="true" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
+            <state relative-caret-position="396">
+              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,8 +84,8 @@
       <file leaf-file-name="OptionsParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sejm/OptionsParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="21" column="48" lean-forward="true" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+            <state relative-caret-position="-30">
+              <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,11 +96,11 @@
       <file leaf-file-name="ResultsPrinter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sejm/ResultsPrinter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+            <state relative-caret-position="-522">
+              <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
               <folding>
-                <element signature="e#970#971#0" expanded="true" />
-                <element signature="e#1017#1018#0" expanded="true" />
+                <element signature="e#1042#1043#0" expanded="true" />
+                <element signature="e#1089#1090#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -114,8 +109,8 @@
       <file leaf-file-name="Deputy.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sejm/Deputy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-216">
-              <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+            <state relative-caret-position="162">
+              <caret line="9" column="37" lean-forward="true" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -156,13 +151,13 @@
         <option value="$PROJECT_DIR$/src/sejm/ReadFromFile.java" />
         <option value="$PROJECT_DIR$/src/sejm/ReadFromURL.java" />
         <option value="$PROJECT_DIR$/src/sejm/ParseArgs.java" />
-        <option value="$PROJECT_DIR$/src/sejm/Deputy.java" />
-        <option value="$PROJECT_DIR$/src/sejm/Main.java" />
-        <option value="$PROJECT_DIR$/src/sejm/ReaderFromURL.java" />
         <option value="$PROJECT_DIR$/src/sejm/ArgsParser.java" />
+        <option value="$PROJECT_DIR$/src/sejm/ReaderFromURL.java" />
         <option value="$PROJECT_DIR$/src/sejm/ResultsPrinter.java" />
         <option value="$PROJECT_DIR$/src/sejm/OptionsParser.java" />
+        <option value="$PROJECT_DIR$/src/sejm/Deputy.java" />
         <option value="$PROJECT_DIR$/src/sejm/Deputies.java" />
+        <option value="$PROJECT_DIR$/src/sejm/Main.java" />
       </list>
     </option>
   </component>
@@ -290,7 +285,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="sejm.Main" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="8 g" />
+      <option name="PROGRAM_PARAMETERS" value="7 a &quot;Katarzyna Hall&quot;" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -690,8 +685,8 @@
         <state relative-caret-position="558">
           <caret line="33" column="85" lean-forward="false" selection-start-line="33" selection-start-column="85" selection-end-line="33" selection-end-column="85" />
           <folding>
-            <element signature="e#970#971#0" expanded="true" />
-            <element signature="e#1017#1018#0" expanded="true" />
+            <element signature="e#1042#1043#0" expanded="true" />
+            <element signature="e#1089#1090#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1030,38 +1025,10 @@
     <entry file="file://$PROJECT_DIR$/src/ReadFromFile.java" />
     <entry file="file://$PROJECT_DIR$/src/sejm/JSONObject.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_91/src.zip!/java/lang/Class.java" />
-    <entry file="file://$PROJECT_DIR$/src/sejm/ReaderFromURL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-66">
-          <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sejm/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-252">
-          <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sejm/ArgsParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="49" column="23" lean-forward="false" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sejm/Deputy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-216">
-          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+        <state relative-caret-position="162">
+          <caret line="9" column="37" lean-forward="true" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1070,8 +1037,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sejm/OptionsParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="48" lean-forward="true" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+        <state relative-caret-position="-30">
+          <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1080,22 +1047,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sejm/ResultsPrinter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+        <state relative-caret-position="-522">
+          <caret line="4" column="3" lean-forward="true" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
           <folding>
-            <element signature="e#970#971#0" expanded="true" />
-            <element signature="e#1017#1018#0" expanded="true" />
+            <element signature="e#1042#1043#0" expanded="true" />
+            <element signature="e#1089#1090#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sejm/Deputies.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="20" column="68" lean-forward="true" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
+        <state relative-caret-position="396">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sejm/ReaderFromURL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sejm/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sejm/ArgsParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
