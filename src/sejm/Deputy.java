@@ -5,24 +5,20 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * Created by Kasia on 2016-12-17.
  */
 
 public class Deputy {
-    private String name;
-
-    public Deputy(JSONObject d){
-
-    }
 
     public static float getSpendings(int id, int termNo) throws ParseException, IOException {
         JSONObject obj = (JSONObject) ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+id+".json?layers[]=wydatki");
         JSONObject data = (JSONObject) obj.get("data");
         String term = data.get("poslowie.kadencja").toString();
         float sum = 0;
-        if(term.contains(Integer.toString(7))){
+        if(term.contains(Integer.toString(termNo))){
             obj = (JSONObject) obj.get("layers");
             obj = (JSONObject) obj.get("wydatki");
             JSONArray years = (JSONArray) obj.get("roczniki");
@@ -34,6 +30,7 @@ public class Deputy {
                 }
             }
         }
+        else sum = 0;
         sum = (float) Math.round(sum * 100) / 100;
         return sum;
     }
@@ -44,7 +41,7 @@ public class Deputy {
         JSONObject data = (JSONObject) obj.get("data");
         String term = data.get("poslowie.kadencja").toString();
         float sum = 0;
-        if(term.contains(Integer.toString(7))){
+        if(term.contains(Integer.toString(termNo))){
             obj = (JSONObject) obj.get("layers");
             obj = (JSONObject) obj.get("wydatki");
             JSONArray years = (JSONArray) obj.get("roczniki");
@@ -54,6 +51,7 @@ public class Deputy {
                 sum += Float.parseFloat(spent.get(13).toString());
             }
         }
+        else sum = 0;
         sum = (float) Math.round(sum * 100) / 100;
         return sum;
     }

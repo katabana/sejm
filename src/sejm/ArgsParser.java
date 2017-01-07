@@ -5,6 +5,7 @@ import org.apache.commons.lang3.text.WordUtils;
 /**
  * Created by Kasia on 2017-01-07.
  */
+//TODO: integrity conditions -? if option a then it has to have 3 args
 public class ArgsParser {
 
     public static String[] parseArgs (String[] args){
@@ -27,7 +28,7 @@ public class ArgsParser {
         if(!rightOptionFormat(option))
             return (option+" is not an available option.");
 
-        if(args.length > 2) {
+        if(args.length >= 2) {
             String name = args[2];
             name = makeName(name);
             if (name.split(" ").length < 2) {
@@ -44,6 +45,8 @@ public class ArgsParser {
 
     //List of options in string
     private static boolean rightOptionFormat(String option){
+        if(option.length() > 1)
+            return false;
         return "abcdef".contains(option);
     }
 

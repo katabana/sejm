@@ -12,7 +12,7 @@ import java.util.Objects;
 /**
  * Created by Kasia on 2016-12-17.
  */
-//list addAll;
+
 public class Deputies {
     protected HashMap<Integer, String> deputies;
     protected HashMap<Integer, Float> spendings;
@@ -21,6 +21,10 @@ public class Deputies {
         this.deputies = new HashMap<Integer, String>();
         this.spendings = new HashMap<Integer, Float>();
         this.makeDeputies(termNo);
+    }
+
+    public HashMap<Integer,String> getDeputies(){
+        return this.deputies;
     }
 
     public void printDeputies(){
@@ -97,11 +101,12 @@ public class Deputies {
     }
 
     //TODO: in general are there trips from 8th term?
-    public int getDeputyMostAbroadTrips(int termNo) throws ParseException, IOException {
+    public String[] getDeputyMostAbroadTrips(int termNo) throws ParseException, IOException {
 
         int expeditions = 0;
         int id = 0;
         int amount = 0;
+        String[] result = new String[2];
         for(int deputyID : this.deputies.keySet()){
             JSONObject obj = (JSONObject) ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+deputyID+".json?layers[]=wyjazdy");
             JSONObject data = (JSONObject) obj.get("data");
@@ -116,8 +121,9 @@ public class Deputies {
                 }
             }
         }
-        System.out.println("Najwięcej podróży zagranicznych "+expeditions+" odbył "+deputies.get(id));
-        return id;
+        result[0] = Integer.toString(id);
+        result[1] = Integer.toString(expeditions);
+        return result;
     }
 
     //TODO: change so it checks years

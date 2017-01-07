@@ -30,7 +30,8 @@ public class Main {
                 return ;
             }
             Deputies deputies = new Deputies(7);
-            deputies.printDeputies();
+            OptionsParser = new OptionsParser(args);
+            //deputies.printDeputies();
             //deputies.getDeputyMostAbroadTrips(7);
             //deputies.getDeputyMostTimeAbroad(7);
             //deputies.deputiesBeenInItaly(7);
