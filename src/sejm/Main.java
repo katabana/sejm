@@ -21,16 +21,18 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String args[]){
-
+        System.out.println(args[2]);
         try {
 
             String m = ArgsParser.validArgs(args);
+            System.out.println("±¶êó¶³¿¼æñ");
             if(!m.isEmpty()) {
                 System.out.println(m);
                 return ;
             }
-            Deputies deputies = new Deputies(7);
-            OptionsParser = new OptionsParser(args);
+            OptionsParser op = new OptionsParser(args);
+            op.parseOptions();
+
             //deputies.printDeputies();
             //deputies.getDeputyMostAbroadTrips(7);
             //deputies.getDeputyMostTimeAbroad(7);
@@ -39,9 +41,9 @@ public class Main {
 
             //wydatki posla
 
-            //int deputyID = deputies.getID("MaÅ‚gorzata Wypych");
+            //int deputyID = deputies.getID("Ma?gorzata Wypych");
             //int deputyID = deputies.getID("Jan Dziedziczak");
-            //int deputyID = deputies.getID("Tadeusz IwiÅ„ski");
+            //int deputyID = deputies.getID("Tadeusz Iwi?ski");
             //System.out.println(deputyID);
             /*
             if (deputyID >= 0) {

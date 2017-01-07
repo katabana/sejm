@@ -7,7 +7,7 @@ public class ResultsPrinter {
     private String option;
     private String deputy;
     private float sum;
-    private int[] results;
+    private String[] results;
     private int result;
 
     public ResultsPrinter(String option, String deputy, float result){
@@ -16,7 +16,23 @@ public class ResultsPrinter {
         this.sum = result;
         this.printResults();
     }
+    public ResultsPrinter(String option, float result) {
+        this.option = option;
+        this.sum = result;
+        this.printResults();
+    }
 
+    public ResultsPrinter(String option, String[] result){
+        this.results = result;
+        this.printResults();
+    }
+    public ResultsPrinter(int termNo, String name){
+        this.printResults(termNo, name);
+    }
+
+    private void printResults(int termNo, String name){
+        System.out.println("There is no such deputy "+name+" in "+termNo+"th term.");
+    }
     private void printResults(){
         switch (this.option){
             case "a":
