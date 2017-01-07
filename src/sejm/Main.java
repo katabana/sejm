@@ -25,16 +25,17 @@ public class Main {
 
         try {
 
-            Deputies deputies = new Deputies(8);
+            Deputies deputies = new Deputies(7);
             //deputies.getDeputyMostAbroadTrips(7);
             //deputies.getDeputyMostTimeAbroad(7);
-            //deputies.deputiesBeenInItaly(7);
-            deputies.getDeputyMostExpensiveTrip(7);
+            deputies.deputiesBeenInItaly(7);
+            //deputies.getDeputyMostExpensiveTrip(7);
 
             //wydatki posla
 
             //int deputyID = deputies.getID("Małgorzata Wypych");
-            int deputyID = deputies.getID("Jan Dziedziczak");
+            //int deputyID = deputies.getID("Jan Dziedziczak");
+            int deputyID = deputies.getID("Tadeusz Iwiński");
             System.out.println(deputyID);
             /*
             if (deputyID >= 0) {
