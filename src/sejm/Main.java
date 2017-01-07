@@ -1,7 +1,5 @@
 package sejm;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -17,6 +15,7 @@ import java.io.IOException;
  * deputy who spent the most time abroad
  * more
  */
+// arguments: termNo, funkcja, [imie + nazwisko]
     //TODO: cleaning arguments: name - delete spaces
 
 public class Main {
@@ -25,18 +24,24 @@ public class Main {
 
         try {
 
+            String m = ArgsParser.validArgs(args);
+            if(!m.isEmpty()) {
+                System.out.println(m);
+                return ;
+            }
             Deputies deputies = new Deputies(7);
+            deputies.printDeputies();
             //deputies.getDeputyMostAbroadTrips(7);
             //deputies.getDeputyMostTimeAbroad(7);
-            deputies.deputiesBeenInItaly(7);
+            //deputies.deputiesBeenInItaly(7);
             //deputies.getDeputyMostExpensiveTrip(7);
 
             //wydatki posla
 
             //int deputyID = deputies.getID("Małgorzata Wypych");
             //int deputyID = deputies.getID("Jan Dziedziczak");
-            int deputyID = deputies.getID("Tadeusz Iwiński");
-            System.out.println(deputyID);
+            //int deputyID = deputies.getID("Tadeusz Iwiński");
+            //System.out.println(deputyID);
             /*
             if (deputyID >= 0) {
                 System.out.println(deputyID);

@@ -4,7 +4,6 @@ import java.io.*;
 import java.net.*;
 import java.nio.charset.Charset;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -14,7 +13,7 @@ import org.json.simple.parser.ParseException;
  * Created by Kasia on 2016-12-16.
  */
 
-public class ReadFromURL {
+public class ReaderFromURL {
 
     private static String readAll(Reader rd) throws IOException {
         StringBuilder sb = new StringBuilder();

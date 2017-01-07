@@ -5,7 +5,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by Kasia on 2016-12-17.
@@ -19,7 +18,7 @@ public class Deputy {
     }
 
     public static float getSpendings(int id, int termNo) throws ParseException, IOException {
-        JSONObject obj = (JSONObject) ReadFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+id+".json?layers[]=wydatki");
+        JSONObject obj = (JSONObject) ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+id+".json?layers[]=wydatki");
         JSONObject data = (JSONObject) obj.get("data");
         String term = data.get("poslowie.kadencja").toString();
         float sum = 0;
@@ -41,7 +40,7 @@ public class Deputy {
 
     //caluclates sum spent on "Drobne naprawy..."
     public static float getOfficeSpendings(int id, int termNo) throws ParseException, IOException {
-        JSONObject obj = (JSONObject) ReadFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+id+".json?layers[]=wydatki");
+        JSONObject obj = (JSONObject) ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+id+".json?layers[]=wydatki");
         JSONObject data = (JSONObject) obj.get("data");
         String term = data.get("poslowie.kadencja").toString();
         float sum = 0;
