@@ -10,7 +10,7 @@ import org.json.simple.parser.ParseException;
 
 
 /**
- * Created by Kasia on 2016-12-16.
+ * Created by Katabana on 2016-12-16.
  */
 
 public class ReaderFromURL {

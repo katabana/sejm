@@ -1,14 +1,16 @@
 package sejm;
 
+import java.util.ArrayList;
+
 /**
- * Created by Kasia on 2017-01-07.
+ * Created by Katabana on 2017-01-07.
  */
 public class ResultsPrinter {
     private String option;
     private String deputy;
     private float sum;
     private String[] results;
-    private int result;
+    private ArrayList<String> list;
 
     public ResultsPrinter(String option, String deputy, float result){
         this.option = option;
@@ -23,7 +25,13 @@ public class ResultsPrinter {
     }
 
     public ResultsPrinter(String option, String[] result){
+        this.option = option;
         this.results = result;
+        this.printResults();
+    }
+    public ResultsPrinter(String option, ArrayList<String> list) {
+        this.option = option;
+        this.list = list;
         this.printResults();
     }
     public ResultsPrinter(int termNo, String name){
@@ -45,8 +53,21 @@ public class ResultsPrinter {
                 System.out.println("Average value of sum of expenses of all deputies is "+this.sum+".");
                 break;
             case "d":
-                System.out.println("Najwięcej podróży zagranicznych "+this.results[1]+" odbył "+this.results[0]);
+                System.out.println("Most foreign trips "+this.results[1]+" had deputy "+this.results[0]);
                 break;
+            case "e":
+                System.out.println("Deputy "+this.results[0]+" spend most time "+this.results[1]+" days abroad.");
+                break;
+            case "f":
+                System.out.println("Deputy "+this.results[0]+" had the most expensive abroad trip which cost was "+this.results[1]+" z�.");
+                break;
+            case "g":
+                System.out.println("Deputies who has been to Italy: ");
+                for(int i = 0; i < this.list.size(); i++) {
+                    System.out.println(this.list.get(i));
+                }
+                break;
+
         }
     }
 }

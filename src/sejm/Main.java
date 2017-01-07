@@ -5,7 +5,7 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 
 /**
- * Created by Kasia on 2016-12-17.
+ * Created by Katabana on 2016-12-17.
  */
 /** done :
  * officeSpendings
@@ -16,16 +16,14 @@ import java.io.IOException;
  * more
  */
 // arguments: termNo, funkcja, [imie + nazwisko]
-    //TODO: cleaning arguments: name - delete spaces
 
 public class Main {
 
     public static void main(String args[]){
-        System.out.println(args[2]);
+
         try {
 
             String m = ArgsParser.validArgs(args);
-            System.out.println("±¶êó¶³¿¼æñ");
             if(!m.isEmpty()) {
                 System.out.println(m);
                 return ;
