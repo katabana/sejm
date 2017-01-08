@@ -16,7 +16,7 @@ public class Deputy {
         JSONObject obj = ReaderFromURL.readExpensesFromUrl(id);
 
         float sum = 0;
-        if(validTerm(obj)){
+        if(validTerm(obj, termNo)){
             obj = (JSONObject) obj.get("layers");
             obj = (JSONObject) obj.get("wydatki");
             JSONArray years = (JSONArray) obj.get("roczniki");
@@ -38,7 +38,7 @@ public class Deputy {
         JSONObject obj = ReaderFromURL.readExpensesFromUrl(id);
         float sum = 0;
 
-        if(validTerm(obj)){
+        if(validTerm(obj, termNo)){
             obj = (JSONObject) obj.get("layers");
             obj = (JSONObject) obj.get("wydatki");
             JSONArray years = (JSONArray) obj.get("roczniki");
@@ -53,10 +53,10 @@ public class Deputy {
         return sum;
     }
 
-    private static boolean validTerm(JSONObject obj){
+    private static boolean validTerm(JSONObject obj,int termNo){
         JSONObject data = (JSONObject) obj.get("data");
         String term = data.get("poslowie.kadencja").toString();
-        return term.contains(Integer.toString(7));
+        return term.contains(Integer.toString(termNo));
     }
 
 }

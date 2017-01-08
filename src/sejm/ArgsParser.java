@@ -6,7 +6,7 @@ import org.json.simple.JSONObject;
 /**
  * Created by Katabana on 2017-01-07.
  */
-//TODO: integrity conditions -? if option a then it has to have 3 args
+
 public class ArgsParser {
 
     public static String[] parseArgs (String[] args){

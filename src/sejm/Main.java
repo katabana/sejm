@@ -23,7 +23,7 @@ import java.io.IOException;
  *        7 g,
  *        8 c
  */
-// arguments: termNo, funkcja, [imie + nazwisko]
+
 
 public class Main {
 
