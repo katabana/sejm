@@ -29,13 +29,19 @@ public class ArgsParser {
         if(!rightOptionFormat(option))
             return (option+" is not an available option.");
 
-        if(args.length == 3) {
+        if(args.length == 2 && "ab".contains(args[1]))
+            return "You need one argument more. Probably deputy's name is lacking.";
+
+        if(args.length == 3 && "ab".contains(args[1])) {
             String name = args[2];
             name = makeName(name);
             if (name.split(" ").length < 2) {
                 return ("\""+name +"\" is not a right deputy's name.");
             }
         }
+        else if(args.length >= 3)
+            return ("Too many ["+args.length+"] arguments.");
+
         return "";
     }
 

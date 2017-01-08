@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 
 public class OptionsParser {
+    private int argsCount;
     private int termNo;
     private String option;
     private String deputy;
@@ -21,10 +22,12 @@ public class OptionsParser {
         this.termNo = Integer.parseInt(args[0]);
         this.dep = new Deputies(termNo);
         this.option = args[1];
-        if(args.length > 2) {
+        this.argsCount = args.length;
+        if(this.argsCount == 3 && "ab".contains(this.option)) {
             this.deputy = args[2];
             this.deputyID = dep.getID(this.deputy);
         }
+
     }
 
     public void parseOptions() throws ParseException, IOException{

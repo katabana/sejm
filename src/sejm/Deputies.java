@@ -12,6 +12,7 @@ import java.util.Objects;
 
 /**
  * Created by Katabana on 2016-12-17.
+ * //eventually have done handling different ways to get deputy - like two names + surname, just one name.
  */
 
 public class Deputies {

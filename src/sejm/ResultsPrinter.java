@@ -41,6 +41,7 @@ public class ResultsPrinter {
     private void printResults(int termNo, String name){
         System.out.println("There is no such deputy "+name+" in "+termNo+"th term.");
     }
+
     private void printResults(int termNo){
         switch (this.option){
             case "a":
