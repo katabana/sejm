@@ -82,6 +82,7 @@ public class Deputies {
                 }
             }
         }
+
         double avg = sum / records;
         avg = (double) Math.round(avg * 100) / 100;      //rounding avg to two decimals
         return avg;

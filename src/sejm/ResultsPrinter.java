@@ -52,7 +52,7 @@ public class ResultsPrinter {
                 System.out.println("Sum of expenses on 'drobne naprawy i remonty biura poselskiego' of "+this.deputy+" is "+this.sum+".");
                 break;
             case "c":
-                System.out.println("Average value of sum of expenses of all deputies is "+this.sum+".");
+                System.out.println("Average value of sum of expenses of all deputies is "+this.result+".");
                 break;
             case "d":
                 System.out.println("Most foreign trips "+this.results[1]+" had deputy "+this.results[0]);
