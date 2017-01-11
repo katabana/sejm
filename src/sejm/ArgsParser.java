@@ -21,6 +21,15 @@ public class ArgsParser {
         if(args.length < 2) {
             return "Not enough arguments";
         }
+        String termText = args[0];
+        boolean notNumber = false;
+        for (int i = 0; i < args[0].length(); i++){
+            if(!Character.isDigit(termText.charAt(i)))
+                notNumber = true;
+        }
+        if(notNumber)
+            return (termText+" is a wrong term number. Choose 7 or 8.");
+
         int term = Integer.parseInt(args[0]);
         if(!validTerm(term))
             return (term+" is a wrong term number. Choose 7 or 8.");

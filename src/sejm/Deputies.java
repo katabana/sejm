@@ -16,13 +16,15 @@ import java.util.Objects;
  */
 
 public class Deputies {
-    protected HashMap<Integer, String> deputies;
-    protected HashMap<Integer, Float> spendings;
+    private HashMap<Integer, String> deputies;
+    private HashMap<Integer, Float> spendings;
+    private int termNo;
 
     public Deputies(int termNo) throws ParseException, IOException {
         this.deputies = new HashMap<>();
         this.spendings = new HashMap<>();
-        this.makeDeputies(termNo);
+        this.termNo = termNo;
+        this.makeDeputies();
     }
 
     public void printDeputies(){
@@ -31,7 +33,7 @@ public class Deputies {
         }
     }
 
-    private void makeDeputies(int termNo) throws ParseException, IOException{
+    private void makeDeputies() throws ParseException, IOException{
 
         JSONObject obj = ReaderFromURL.readStartPage();
         JSONArray root = ReaderFromURL.makeLinksList(obj);
@@ -43,7 +45,7 @@ public class Deputies {
             //String name = data.get("poslowie.imie_pierwsze").toString() +" "+data.get("poslowie.nazwisko").toString();
             String name = data.get("ludzie.nazwa").toString();
             String term = data.get("poslowie.kadencja").toString();
-            if(term.contains(new Integer(termNo).toString())) {
+            if(term.contains(new Integer(this.termNo).toString())) {
                 this.deputies.put(id, name);
             }
         }
@@ -60,13 +62,13 @@ public class Deputies {
     }
 
 
-    public float avgSpendings(int termNo) throws ParseException, IOException {
-        float sum = 0;
+    public double avgSpendings() throws ParseException, IOException {
+        double sum = 0;
         int records = 0;
         for(int id : this.deputies.keySet()){
             JSONObject obj = ReaderFromURL.readExpensesFromUrl(id);
 
-            if(ArgsParser.rightTerm(obj, termNo)) {
+            if(ArgsParser.rightTerm(obj, this.termNo)) {
                 records++;
                 obj = (JSONObject) obj.get("layers");
                 obj = (JSONObject) obj.get("wydatki");
@@ -80,33 +82,33 @@ public class Deputies {
                 }
             }
         }
-        float avg = sum / records;
-        avg = (float) Math.round(avg * 100) / 100;      //rounding avg to two decimals
+        double avg = sum / records;
+        avg = (double) Math.round(avg * 100) / 100;      //rounding avg to two decimals
         return avg;
     }
 
-    public String[] getDeputyMostAbroadTrips(int termNo) throws ParseException, IOException {
+    public String[] getDeputyMostAbroadTrips() throws ParseException, IOException {
 
-        return Trips.findMostAbroadTrips(termNo, this.deputies);
+        return Trips.findMostAbroadTrips(this.termNo, this.deputies);
     }
 
-    public String[] getDeputyMostTimeAbroad(int termNo) throws ParseException, IOException {
+    public String[] getDeputyMostTimeAbroad() throws ParseException, IOException {
 
-        return Trips.findDeputyMostTimeAbroad(termNo, this.deputies);
+        return Trips.findDeputyMostTimeAbroad(this.termNo, this.deputies);
     }
 
-    public String[] getDeputyMostExpensiveTrip(int termNo) throws ParseException, IOException {
+    public String[] getDeputyMostExpensiveTrip() throws ParseException, IOException {
 
-        return Trips.findDeputyMostExpensiveTrip(termNo, this.deputies);
+        return Trips.findDeputyMostExpensiveTrip(this.termNo, this.deputies);
     }
 
-    public ArrayList<String> deputiesBeenInItaly(int termNo) throws ParseException, IOException {
+    public ArrayList<String> deputiesBeenInItaly() throws ParseException, IOException {
         ArrayList<String> deputiesList = new ArrayList<>();
         for(int deputyID : this.deputies.keySet()) {
             JSONObject obj = ReaderFromURL.readTripsFromUrl(deputyID);
             JSONObject data = (JSONObject) obj.get("data");
 
-            if(ArgsParser.rightTerm(obj, termNo)) {
+            if(ArgsParser.rightTerm(obj, this.termNo)) {
                 int tripsNumber = Integer.parseInt(data.get("poslowie.liczba_wyjazdow").toString());
 
                 obj = (JSONObject) obj.get("layers");

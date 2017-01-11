@@ -9,6 +9,7 @@ public class ResultsPrinter {
     private String option;
     private String deputy;
     private float sum;
+    private double result;
     private String[] results;
     private ArrayList<String> list;
 
@@ -18,9 +19,9 @@ public class ResultsPrinter {
         this.sum = result;
         this.printResults(termNo);
     }
-    public ResultsPrinter(int termNo, String option, float result) {
+    public ResultsPrinter(int termNo, String option, double result) {
         this.option = option;
-        this.sum = result;
+        this.result = result;
         this.printResults(termNo);
     }
 

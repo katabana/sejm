@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created by kasia on 08.01.17.
  */
 class DeputiesTest {
+
     @Test
     void getID() throws ParseException,IOException {
         Deputies d8 = new Deputies(8);

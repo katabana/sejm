@@ -39,15 +39,6 @@ public class Main {
             OptionsParser op = new OptionsParser(ArgsParser.parseArgs(args));
             op.parseOptions();
 
-            //deputies.printDeputies();
-            //deputies.getDeputyMostAbroadTrips(7);
-            //deputies.getDeputyMostTimeAbroad(7);
-            //deputies.deputiesBeenInItaly(7);
-            //deputies.getDeputyMostExpensiveTrip(7);
-
-            //int deputyID = deputies.getID("Ma?gorzata Wypych");
-            //int deputyID = deputies.getID("Jan Dziedziczak");
-            //System.out.println(deputyID);
 
         } catch (ParseException e) {
             System.out.println(e.getMessage());

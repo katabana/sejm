@@ -57,35 +57,35 @@ public class OptionsParser {
 
             //average value of expenses of all deputies
             case "c": {
-                float result = dep.avgSpendings(this.termNo);
-                ResultsPrinter rp = new ResultsPrinter(this.termNo, "c", result);
+                double result = dep.avgSpendings();
+                new ResultsPrinter(this.termNo, "c", result);
                 break;
             }
 
             //the biggest value of how many abroad trips had deputies
             case "d": {
-                String[] results = dep.getDeputyMostAbroadTrips(this.termNo);
+                String[] results = dep.getDeputyMostAbroadTrips();
                 new ResultsPrinter(this.termNo,"d", results);
                 break;
             }
 
             //the biggest value of how long any deputy spend time abroad
             case "e": {
-                String[] results = dep.getDeputyMostTimeAbroad(this.termNo);
+                String[] results = dep.getDeputyMostTimeAbroad();
                 new ResultsPrinter(this.termNo,"e", results);
                 break;
             }
 
             //the most expensive trip and deputy who had it
             case "f": {
-                String[] results = dep.getDeputyMostExpensiveTrip(this.termNo);
+                String[] results = dep.getDeputyMostExpensiveTrip();
                 new ResultsPrinter(this.termNo,"f", results);
                 break;
             }
 
             //list of deputies who has been to Italy
             case "g": {
-                ArrayList<String> list = dep.deputiesBeenInItaly(this.termNo);
+                ArrayList<String> list = dep.deputiesBeenInItaly();
                 new ResultsPrinter(this.termNo,"g", list);
                 break;
             }
