@@ -3,6 +3,7 @@ package sejm;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 
