@@ -7,10 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d06a712c-34c5-4635-9876-41c08a5e9f3b" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/sejm/Main.java" afterPath="$PROJECT_DIR$/src/sejm/Application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sejm/Deputies.java" afterPath="$PROJECT_DIR$/src/sejm/Deputies.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sejm/ResultsPrinter.java" afterPath="$PROJECT_DIR$/src/sejm/ResultsPrinter.java" />
     </list>
     <ignored path="sejm.iws" />
@@ -44,7 +40,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Application.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sejm/Application.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="522">
@@ -113,13 +109,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResultsPrinter.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ResultsPrinter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sejm/ResultsPrinter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="47" column="21" lean-forward="true" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+            <state relative-caret-position="234">
+              <caret line="48" column="89" lean-forward="false" selection-start-line="48" selection-start-column="89" selection-end-line="48" selection-end-column="89" />
               <folding>
-                <marker date="1484155731347" expanded="true" signature="621:672" ph="{...}" />
+                <marker date="1484156289151" expanded="true" signature="621:672" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -775,7 +771,7 @@
         <state relative-caret-position="558">
           <caret line="33" column="85" lean-forward="false" selection-start-line="33" selection-start-column="85" selection-end-line="33" selection-end-column="85" />
           <folding>
-            <marker date="1484155731347" expanded="true" signature="621:672" ph="{...}" />
+            <marker date="1484156289151" expanded="true" signature="621:672" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1179,22 +1175,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sejm/ResultsPrinter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="47" column="21" lean-forward="true" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
-          <folding>
-            <marker date="1484155731347" expanded="true" signature="621:672" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sejm/Application.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="522">
           <caret line="29" column="27" lean-forward="true" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sejm/ResultsPrinter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="48" column="89" lean-forward="false" selection-start-line="48" selection-start-column="89" selection-end-line="48" selection-end-column="89" />
+          <folding>
+            <marker date="1484156289151" expanded="true" signature="621:672" ph="{...}" />
           </folding>
         </state>
       </provider>

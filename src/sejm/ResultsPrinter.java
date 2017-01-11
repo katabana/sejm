@@ -46,13 +46,13 @@ public class ResultsPrinter {
     private void printResults(int termNo){
         switch (this.option){
             case "a":
-                System.out.println("Sum of expenses of "+this.deputy+" is "+this.sum+".");
+                System.out.println("Sum of expenses of "+this.deputy+" is "+this.sum+" z³.");
                 break;
             case "b":
-                System.out.println("Sum of expenses on 'drobne naprawy i remonty biura poselskiego' of "+this.deputy+" is "+this.sum+".");
+                System.out.println("Sum of expenses on 'drobne naprawy i remonty biura poselskiego' of "+this.deputy+" is "+this.sum+" z³.");
                 break;
             case "c":
-                System.out.println("Average value of sum of expenses of all deputies is "+this.result+".");
+                System.out.println("Average value of sum of expenses of all deputies is "+this.result+" z³.");
                 break;
             case "d":
                 System.out.println("Most foreign trips "+this.results[1]+" had deputy "+this.results[0]);
