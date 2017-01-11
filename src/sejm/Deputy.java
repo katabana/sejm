@@ -5,20 +5,18 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 /**
- * Created by Kasia on 2016-12-17.
+ * Created by Katabana on 2016-12-17.
  */
 
 public class Deputy {
 
     public static float getSpendings(int id, int termNo) throws ParseException, IOException {
-        JSONObject obj = (JSONObject) ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+id+".json?layers[]=wydatki");
-        JSONObject data = (JSONObject) obj.get("data");
-        String term = data.get("poslowie.kadencja").toString();
+        JSONObject obj = ReaderFromURL.readExpensesFromUrl(id);
+
         float sum = 0;
-        if(term.contains(Integer.toString(termNo))){
+        if(validTerm(obj, termNo)){
             obj = (JSONObject) obj.get("layers");
             obj = (JSONObject) obj.get("wydatki");
             JSONArray years = (JSONArray) obj.get("roczniki");
@@ -37,11 +35,10 @@ public class Deputy {
 
     //caluclates sum spent on "Drobne naprawy..."
     public static float getOfficeSpendings(int id, int termNo) throws ParseException, IOException {
-        JSONObject obj = (JSONObject) ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+id+".json?layers[]=wydatki");
-        JSONObject data = (JSONObject) obj.get("data");
-        String term = data.get("poslowie.kadencja").toString();
+        JSONObject obj = ReaderFromURL.readExpensesFromUrl(id);
         float sum = 0;
-        if(term.contains(Integer.toString(termNo))){
+
+        if(validTerm(obj, termNo)){
             obj = (JSONObject) obj.get("layers");
             obj = (JSONObject) obj.get("wydatki");
             JSONArray years = (JSONArray) obj.get("roczniki");
@@ -54,6 +51,12 @@ public class Deputy {
         else sum = 0;
         sum = (float) Math.round(sum * 100) / 100;
         return sum;
+    }
+
+    private static boolean validTerm(JSONObject obj,int termNo){
+        JSONObject data = (JSONObject) obj.get("data");
+        String term = data.get("poslowie.kadencja").toString();
+        return term.contains(Integer.toString(termNo));
     }
 
 }

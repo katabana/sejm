@@ -4,13 +4,14 @@ import java.io.*;
 import java.net.*;
 import java.nio.charset.Charset;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 
 /**
- * Created by Kasia on 2016-12-16.
+ * Created by Katabana on 2016-12-16.
  */
 
 public class ReaderFromURL {
@@ -42,5 +43,29 @@ public class ReaderFromURL {
         finally {
             is.close();
         }
+    }
+
+    public static JSONObject readExpensesFromUrl(int id) throws IOException, ParseException {
+        return ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+id+".json?layers[]=wydatki");
+    }
+
+    public static JSONObject readTripsFromUrl(int id) throws IOException, ParseException {
+        return ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+id+".json?layers[]=wyjazdy");
+    }
+
+    public static JSONObject readStartPage() throws IOException, ParseException {
+        return ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie.json");
+    }
+
+    public static JSONArray makeLinksList(JSONObject obj) throws IOException, ParseException {
+        JSONArray root = (JSONArray) obj.get("Dataobject");
+        obj = (JSONObject) obj.get("Links");
+        while(obj.get("next")!=null) {
+            String url = obj.get("next").toString();
+            obj = ReaderFromURL.readJsonFromUrl(url);
+            root.addAll((JSONArray) obj.get("Dataobject"));
+            obj = (JSONObject) obj.get("Links");
+        }
+        return root;
     }
 }

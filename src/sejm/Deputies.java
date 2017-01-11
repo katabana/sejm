@@ -5,12 +5,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 /**
- * Created by Kasia on 2016-12-17.
+ * Created by Katabana on 2016-12-17.
+ * //eventually have done handling different ways to get deputy - like two names + surname, just one name.
  */
 
 public class Deputies {
@@ -18,13 +20,9 @@ public class Deputies {
     protected HashMap<Integer, Float> spendings;
 
     public Deputies(int termNo) throws ParseException, IOException {
-        this.deputies = new HashMap<Integer, String>();
-        this.spendings = new HashMap<Integer, Float>();
+        this.deputies = new HashMap<>();
+        this.spendings = new HashMap<>();
         this.makeDeputies(termNo);
-    }
-
-    public HashMap<Integer,String> getDeputies(){
-        return this.deputies;
     }
 
     public void printDeputies(){
@@ -33,18 +31,10 @@ public class Deputies {
         }
     }
 
-    //which term to calculate
     private void makeDeputies(int termNo) throws ParseException, IOException{
 
-        JSONObject obj = (JSONObject) ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie.json");
-        JSONArray root = (JSONArray) obj.get("Dataobject");
-        obj = (JSONObject) obj.get("Links");
-        while(obj.get("next")!=null) {
-            String url = obj.get("next").toString();
-            obj = (JSONObject) ReaderFromURL.readJsonFromUrl(url);
-            root.addAll((JSONArray) obj.get("Dataobject"));
-            obj = (JSONObject) obj.get("Links");
-        }
+        JSONObject obj = ReaderFromURL.readStartPage();
+        JSONArray root = ReaderFromURL.makeLinksList(obj);
 
         for (int i = 0; i < root.size(); i++) {
             JSONObject data = (JSONObject) root.get(i);
@@ -71,17 +61,12 @@ public class Deputies {
 
 
     public float avgSpendings(int termNo) throws ParseException, IOException {
-
-        System.out.println("liczy wydatki");
         float sum = 0;
         int records = 0;
         for(int id : this.deputies.keySet()){
-            JSONObject obj = (JSONObject) ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+id+".json?layers[]=wydatki");
-            JSONObject data = (JSONObject) obj.get("data");
-            String term = data.get("poslowie.kadencja").toString();
-            //7 as only records from 7th term are on
-            //in future I would check years of term
-            if(term.contains(Integer.toString(7))) {
+            JSONObject obj = ReaderFromURL.readExpensesFromUrl(id);
+
+            if(ArgsParser.rightTerm(obj, termNo)) {
                 records++;
                 obj = (JSONObject) obj.get("layers");
                 obj = (JSONObject) obj.get("wydatki");
@@ -100,130 +85,50 @@ public class Deputies {
         return avg;
     }
 
-    //TODO: in general are there trips from 8th term?
     public String[] getDeputyMostAbroadTrips(int termNo) throws ParseException, IOException {
 
-        int expeditions = 0;
-        int id = 0;
-        int amount = 0;
-        String[] result = new String[2];
-        for(int deputyID : this.deputies.keySet()){
-            JSONObject obj = (JSONObject) ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+deputyID+".json?layers[]=wyjazdy");
-            JSONObject data = (JSONObject) obj.get("data");
-            String term = data.get("poslowie.kadencja").toString();
-            //7 as only records from 7th term are on
-            //in the future I would check years of term
-            if(term.contains(Integer.toString(7))) {
-                amount = Integer.parseInt(data.get("poslowie.liczba_wyjazdow").toString());
-                if (amount > expeditions) {
-                    expeditions = amount;
-                    id = deputyID;
-                }
-            }
-        }
-        result[0] = Integer.toString(id);
-        result[1] = Integer.toString(expeditions);
-        return result;
+        return Trips.findMostAbroadTrips(termNo, this.deputies);
     }
 
-    //TODO: change so it checks years
-    public int getDeputyMostTimeAbroad(int termNo) throws ParseException, IOException {
-        int timeMax = 0;
-        int id = 0;
-        for(int deputyID : this.deputies.keySet()){
-            int time = 0;
-            JSONObject obj = (JSONObject) ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+deputyID+".json?layers[]=wyjazdy");
-            JSONObject data = (JSONObject) obj.get("data");
+    public String[] getDeputyMostTimeAbroad(int termNo) throws ParseException, IOException {
 
-            String term = data.get("poslowie.kadencja").toString();
-            int tripsNumber = Integer.parseInt(data.get("poslowie.liczba_wyjazdow").toString());
-
-            obj = (JSONObject) obj.get("layers");
-
-            if(tripsNumber > 1) {           //as "wyjazdy" is stored as an array if it is not empty
-                JSONArray wyjazdy = (JSONArray) obj.get("wyjazdy");
-                for (int i = 0; i < wyjazdy.size(); i++) {
-                    JSONObject singleTrip = (JSONObject) wyjazdy.get(i);
-                    if (singleTrip != null)
-                        time += Integer.parseInt(singleTrip.get("liczba_dni").toString());
-                }
-            }
-            if (time > timeMax) {
-                id = deputyID;
-                timeMax = time;
-            }
-
-            //7 as only records from 7th term are on
-            //in the future I would check years of term
-            /*
-            if(term.contains(Integer.toString(7))) {
-                amount = Integer.parseInt(data.get("poslowie.liczba_wyjazdow").toString());
-                if (amount > trips) {
-                    trips = amount;
-                    id = deputyID;
-                }
-            } */
-        }
-        System.out.println("Poseł "+deputies.get(id)+" spędził najwięcej czasu "+timeMax+" dni za granicą.");
-
-        return id;
+        return Trips.findDeputyMostTimeAbroad(termNo, this.deputies);
     }
 
-    public int getDeputyMostExpensiveTrip(int termNo) throws ParseException, IOException {
-        float expendituresMax = 0;
-        int id = 0;
-        for(int deputyID : this.deputies.keySet()){
-            float expenditures = 0;
-            JSONObject obj = (JSONObject) ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+deputyID+".json?layers[]=wyjazdy");
-            JSONObject data = (JSONObject) obj.get("data");
+    public String[] getDeputyMostExpensiveTrip(int termNo) throws ParseException, IOException {
 
-            String term = data.get("poslowie.kadencja").toString();
-            int tripsNumber = Integer.parseInt(data.get("poslowie.liczba_wyjazdow").toString());
-
-            obj = (JSONObject) obj.get("layers");
-
-            if(tripsNumber > 1) {           //as "wyjazdy" is stored as an array if it is not empty
-                JSONArray wyjazdy = (JSONArray) obj.get("wyjazdy");
-                for (int i = 0; i < wyjazdy.size(); i++) {
-                    JSONObject singleTrip = (JSONObject) wyjazdy.get(i);
-                    if (singleTrip != null)
-                        expenditures += Float.parseFloat(singleTrip.get("koszt_suma").toString());
-                }
-            }
-            if (expenditures > expendituresMax) {
-                id = deputyID;
-                expendituresMax = expenditures;
-            }
-
-        }
-        System.out.println("Poseł "+deputies.get(id)+" odbył najdroższą podróż o wartości "+expendituresMax+" zł.");
-        return id;
+        return Trips.findDeputyMostExpensiveTrip(termNo, this.deputies);
     }
 
-    public void deputiesBeenInItaly(int termNo) throws ParseException, IOException {
-        String deputiesList = "";
+    public ArrayList<String> deputiesBeenInItaly(int termNo) throws ParseException, IOException {
+        ArrayList<String> deputiesList = new ArrayList<>();
         for(int deputyID : this.deputies.keySet()) {
-            JSONObject obj = (JSONObject) ReaderFromURL.readJsonFromUrl("https://api-v3.mojepanstwo.pl/dane/poslowie/"+deputyID+".json?layers[]=wyjazdy");
+            JSONObject obj = ReaderFromURL.readTripsFromUrl(deputyID);
             JSONObject data = (JSONObject) obj.get("data");
 
-            String term = data.get("poslowie.kadencja").toString();
-            int tripsNumber = Integer.parseInt(data.get("poslowie.liczba_wyjazdow").toString());
+            if(ArgsParser.rightTerm(obj, termNo)) {
+                int tripsNumber = Integer.parseInt(data.get("poslowie.liczba_wyjazdow").toString());
 
-            obj = (JSONObject) obj.get("layers");
-            Boolean beenInItaly = false;
-            if(tripsNumber > 1) {           //as "wyjazdy" is stored as an array if it is not empty
-                JSONArray wyjazdy = (JSONArray) obj.get("wyjazdy");
-                for (int i = 0; i < wyjazdy.size(); i++) {
-                    JSONObject singleTrip = (JSONObject) wyjazdy.get(i);
-                    if (singleTrip != null)
-                        if (singleTrip.get("kraj").toString().equals("Włochy"))
-                            beenInItaly = true;
+                obj = (JSONObject) obj.get("layers");
+                Boolean beenInItaly = false;
+                if (tripsNumber > 1) {           //as "wyjazdy" is stored as an array if it is not empty
+                    JSONArray wyjazdy = (JSONArray) obj.get("wyjazdy");
+                    for (int i = 0; i < wyjazdy.size(); i++) {
+                        JSONObject singleTrip = (JSONObject) wyjazdy.get(i);
+                        if (singleTrip != null) {
+                            String country = singleTrip.get("kraj").toString();
+                            if (country.equals("W�ochy"))
+                                beenInItaly = true;
+                        }
+                    }
+                }
+                if (beenInItaly == true) {
+                    deputiesList.add(this.deputies.get(deputyID));
                 }
             }
-            if(beenInItaly == true)
-                deputiesList += this.deputies.get(deputyID)+"\n";
         }
-        System.out.println(deputiesList);
+        return deputiesList;
     }
+
 
 }

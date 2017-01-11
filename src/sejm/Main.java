@@ -5,32 +5,38 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 
 /**
- * Created by Kasia on 2016-12-17.
+ * Created by Katabana on 2016-12-17.
  */
-/** done :
- * officeSpendings
- * average sum of spendings
- * sum of deputy's spendings
- * deputy who had the most abroad trips
- * deputy who spent the most time abroad
- * more
+/**         Args: termNo option [name + surname]
+ *          deputy's name has to be in "" quotes.
+ *
+ * options:
+ * a    -   sum of expenses of deputy, deputy's name obligatory
+ * b    -   sum of expenses on 'drobne naprawy i remonty biura poselskiego' of deputy, deputy's name obligatory
+ * c    -   average value of expenses of all deputies
+ * d    -   the biggest value of how many abroad trips had deputies and who had it
+ * e    -   the biggest value of how long deputies spent time abroad and who did it
+ * f    -   the most expensive trip and deputy who had it
+ * g    -   list of deputies who has been to Italy
+ *
+ *  e. g. 8 a "Ma³gorzata Wypych",
+ *        7 g,
+ *        8 c
  */
-// arguments: termNo, funkcja, [imie + nazwisko]
-    //TODO: cleaning arguments: name - delete spaces
+
 
 public class Main {
 
     public static void main(String args[]){
-        System.out.println(args[2]);
+
         try {
 
             String m = ArgsParser.validArgs(args);
-            System.out.println("±¶êó¶³¿¼æñ");
             if(!m.isEmpty()) {
                 System.out.println(m);
                 return ;
             }
-            OptionsParser op = new OptionsParser(args);
+            OptionsParser op = new OptionsParser(ArgsParser.parseArgs(args));
             op.parseOptions();
 
             //deputies.printDeputies();
@@ -39,21 +45,10 @@ public class Main {
             //deputies.deputiesBeenInItaly(7);
             //deputies.getDeputyMostExpensiveTrip(7);
 
-            //wydatki posla
-
             //int deputyID = deputies.getID("Ma?gorzata Wypych");
             //int deputyID = deputies.getID("Jan Dziedziczak");
-            //int deputyID = deputies.getID("Tadeusz Iwi?ski");
             //System.out.println(deputyID);
-            /*
-            if (deputyID >= 0) {
-                System.out.println(deputyID);
-                float spent = Deputy.getSpendings(deputyID, 7);
-                System.out.println(spent);
-            }
-            else
-                System.out.println("No such deputy.");
-            */
+
         } catch (ParseException e) {
             System.out.println(e.getMessage());
         } catch (IOException e) {
