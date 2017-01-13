@@ -11,12 +11,19 @@ import java.io.IOException;
  */
 
 public class Deputy {
+    private int id;
+    private int termNo;
 
-    public static float getSpendings(int id, int termNo) throws ParseException, IOException {
-        JSONObject obj = ReaderFromURL.readExpensesFromUrl(id);
+    public Deputy(int id, int termNo){
+        this.id = id;
+        this.termNo = termNo;
+    }
+
+    public float getSpendings() throws ParseException, IOException {
+        JSONObject obj = ReaderFromURL.readExpensesFromUrl(this.id);
 
         float sum = 0;
-        if(validTerm(obj, termNo)){
+        if(validTerm(obj, this.termNo)){
             obj = (JSONObject) obj.get("layers");
             obj = (JSONObject) obj.get("wydatki");
             JSONArray years = (JSONArray) obj.get("roczniki");
@@ -34,11 +41,11 @@ public class Deputy {
     }
 
     //caluclates sum spent on "Drobne naprawy..."
-    public static float getOfficeSpendings(int id, int termNo) throws ParseException, IOException {
-        JSONObject obj = ReaderFromURL.readExpensesFromUrl(id);
+    public float getOfficeSpendings() throws ParseException, IOException {
+        JSONObject obj = ReaderFromURL.readExpensesFromUrl(this.id);
         float sum = 0;
 
-        if(validTerm(obj, termNo)){
+        if(validTerm(obj, this.termNo)){
             obj = (JSONObject) obj.get("layers");
             obj = (JSONObject) obj.get("wydatki");
             JSONArray years = (JSONArray) obj.get("roczniki");

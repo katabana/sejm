@@ -8,48 +8,53 @@ import org.json.simple.JSONObject;
  */
 
 public class ArgsParser {
+    private String[] args;
 
-    public static String[] parseArgs (String[] args){
-        if(args.length == 3) {
-            args[2] = makeName(args[2]);
-            return args;
-        }
-        return args;
+    public ArgsParser(String[] args){
+        this.args = args;
     }
 
-    public static String validArgs (String[] args) {
-        if(args.length < 2) {
+    public String[] parseArgs (){
+        if(this.args.length == 3) {
+            this.args[2] = makeName(this.args[2]);
+            return this.args;
+        }
+        return this.args;
+    }
+
+    public String validArgs () {
+        if(this.args.length < 2) {
             return "Not enough arguments";
         }
-        String termText = args[0];
+        String termText = this.args[0];
         boolean notNumber = false;
-        for (int i = 0; i < args[0].length(); i++){
+        for (int i = 0; i < this.args[0].length(); i++){
             if(!Character.isDigit(termText.charAt(i)))
                 notNumber = true;
         }
         if(notNumber)
             return (termText+" is a wrong term number. Choose 7 or 8.");
 
-        int term = Integer.parseInt(args[0]);
+        int term = Integer.parseInt(this.args[0]);
         if(!validTerm(term))
             return (term+" is a wrong term number. Choose 7 or 8.");
 
-        String option = args[1];
+        String option = this.args[1];
         if(!rightOptionFormat(option))
             return (option+" is not an available option.");
 
-        if(args.length == 2 && "ab".contains(args[1]))
+        if(this.args.length == 2 && "ab".contains(this.args[1]))
             return "You need one argument more. Probably deputy's name is lacking.";
 
-        if(args.length == 3 && "ab".contains(args[1])) {
-            String name = args[2];
+        if(this.args.length == 3 && "ab".contains(this.args[1])) {
+            String name = this.args[2];
             name = makeName(name);
             if (name.split(" ").length < 2) {
                 return ("\""+name +"\" is not a right deputy's name.");
             }
         }
-        else if(args.length >= 3)
-            return ("Too many ["+args.length+"] arguments.");
+        else if(this.args.length >= 3)
+            return ("Too many ["+this.args.length+"] arguments.");
 
         return "";
     }

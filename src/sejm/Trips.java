@@ -12,16 +12,24 @@ import java.util.HashMap;
  */
 public class Trips {
 
-    public static String[] findMostAbroadTrips(int termNo, HashMap<Integer, String> deputies) throws ParseException, IOException {
+    private HashMap<Integer, String> deputies;
+    private int termNo;
+
+    public Trips(int termNo, HashMap<Integer, String> deputies ){
+        this.deputies = deputies;
+        this.termNo = termNo;
+    }
+
+    public String[] findMostAbroadTrips() throws ParseException, IOException {
         int expeditions = 0;
         int id = 0;
         int amount = 0;
         String[] result = new String[2];
-        for(int deputyID : deputies.keySet()){
+        for(int deputyID : this.deputies.keySet()){
             JSONObject obj = ReaderFromURL.readTripsFromUrl(deputyID);
             JSONObject data = (JSONObject) obj.get("data");
 
-            if(ArgsParser.rightTerm(obj, termNo)) {
+            if(ArgsParser.rightTerm(obj, this.termNo)) {
                 amount = Integer.parseInt(data.get("poslowie.liczba_wyjazdow").toString());
                 if (amount > expeditions) {
                     expeditions = amount;
@@ -29,22 +37,22 @@ public class Trips {
                 }
             }
         }
-        result[0] = deputies.get(id);
+        result[0] = this.deputies.get(id);
         result[1] = Integer.toString(expeditions);
         return result;
 
     }
 
-    public static String[] findDeputyMostTimeAbroad(int termNo, HashMap<Integer, String> deputies) throws ParseException, IOException {
+    public String[] findDeputyMostTimeAbroad() throws ParseException, IOException {
         int timeMax = 0;
         int id = 0;
         String[] result = new String[2];
-        for(int deputyID : deputies.keySet()){
+        for(int deputyID : this.deputies.keySet()){
             int time = 0;
             JSONObject obj = ReaderFromURL.readTripsFromUrl(deputyID);
             JSONObject data = (JSONObject) obj.get("data");
 
-            if(ArgsParser.rightTerm(obj, termNo)) {
+            if(ArgsParser.rightTerm(obj, this.termNo)) {
                 int tripsNumber = Integer.parseInt(data.get("poslowie.liczba_wyjazdow").toString());
 
                 obj = (JSONObject) obj.get("layers");
@@ -64,23 +72,23 @@ public class Trips {
             }
 
         }
-        result [0] = deputies.get(id);
+        result [0] = this.deputies.get(id);
         result[1] = Integer.toString(timeMax);
 
         return result;
     }
 
-    public static String[] findDeputyMostExpensiveTrip(int termNo, HashMap<Integer,String> deputies) throws ParseException, IOException {
+    public String[] findDeputyMostExpensiveTrip() throws ParseException, IOException {
         float expendituresMax = 0;
         int id = 0;
         String[] result = new String[2];
 
-        for(int deputyID : deputies.keySet()){
+        for(int deputyID : this.deputies.keySet()){
             float expenditures = 0;
             JSONObject obj = ReaderFromURL.readTripsFromUrl(deputyID);
             JSONObject data = (JSONObject) obj.get("data");
 
-            if(ArgsParser.rightTerm(obj, termNo)) {
+            if(ArgsParser.rightTerm(obj, this.termNo)) {
                 int tripsNumber = Integer.parseInt(data.get("poslowie.liczba_wyjazdow").toString());
 
                 obj = (JSONObject) obj.get("layers");
@@ -103,7 +111,7 @@ public class Trips {
             }
 
         }
-        result[0] = deputies.get(id);
+        result[0] = this.deputies.get(id);
         result[1] = Float.toString(expendituresMax);
 
         return result;

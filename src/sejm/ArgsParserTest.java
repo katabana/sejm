@@ -13,52 +13,52 @@ class ArgsParserTest {
     @org.junit.jupiter.api.Test
     void parseArgs() {
 
-        Assertions.assertArrayEquals(ArgsParser.parseArgs(new String[]{"8","a","JAn   DziEDziczak"}),new String[]{"8", "a","Jan Dziedziczak"});
-        Assertions.assertArrayEquals(ArgsParser.parseArgs(new String[]{"8","b","Ma³goRZata    WypyCH"}), new String[]{"8","b","Ma³gorzata Wypych"});
-        Assertions.assertTrue(ArgsParser.parseArgs(new String[]{"7","a","RomAN giERtycH"})[2].equals("Roman Giertych"));
-        Assertions.assertArrayEquals(ArgsParser.parseArgs(new String[]{"6","a"}),new String[] {"6","a"});
+        Assertions.assertArrayEquals(new ArgsParser(new String[]{"8","a","JAn   DziEDziczak"}).parseArgs(),new String[]{"8", "a","Jan Dziedziczak"});
+        Assertions.assertArrayEquals(new ArgsParser(new String[]{"8","b","Ma³goRZata    WypyCH"}).parseArgs(), new String[]{"8","b","Ma³gorzata Wypych"});
+        Assertions.assertTrue(new ArgsParser(new String[]{"7","a","RomAN giERtycH"}).parseArgs()[2].equals("Roman Giertych"));
+        Assertions.assertArrayEquals(new ArgsParser(new String[]{"6","a"}).parseArgs(),new String[] {"6","a"});
 
-        Assertions.assertFalse(ArgsParser.parseArgs(new String[]{"7","a","KaTarzyna Hall"})[2].equals("Katarzyna Wall"));
-        Assertions.assertFalse(ArgsParser.parseArgs(new String[]{"7","a","KaTarzyna Hall"})[2].equals("Jan Dziedziczak"));
+        Assertions.assertFalse(new ArgsParser(new String[]{"7","a","KaTarzyna Hall"}).parseArgs()[2].equals("Katarzyna Wall"));
+        Assertions.assertFalse(new ArgsParser(new String[]{"7","a","KaTarzyna Hall"}).parseArgs()[2].equals("Jan Dziedziczak"));
 
     }
 
     @org.junit.jupiter.api.Test
     void validArgs() {
 
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{}),"Not enough arguments.");
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"a"}),"Not enough arguments.");
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"diasd"}),"Not enough arguments.");
+        Assertions.assertEquals(new ArgsParser(new String[]{}).validArgs(),"Not enough arguments.");
+        Assertions.assertEquals(new ArgsParser(new String[]{"a"}).validArgs(),"Not enough arguments.");
+        Assertions.assertEquals(new ArgsParser(new String[]{"diasd"}).validArgs(),"Not enough arguments.");
 
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"a","etwas"}),"a is a wrong term number. Choose 7 or 8.");
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"Kokanuga","etwas"}),"Kokanuga is a wrong term number. Choose 7 or 8.");
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"10","etwas"}),"10 is a wrong term number. Choose 7 or 8.");
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"-20","etwas"}),"-20 is a wrong term number. Choose 7 or 8.");
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"-20","etwas","kkk"}),"Too many [3] arguments.");
+        Assertions.assertEquals(new ArgsParser(new String[]{"a","etwas"}).validArgs(),"a is a wrong term number. Choose 7 or 8.");
+        Assertions.assertEquals(new ArgsParser(new String[]{"Kokanuga","etwas"}).validArgs(),"Kokanuga is a wrong term number. Choose 7 or 8.");
+        Assertions.assertEquals(new ArgsParser(new String[]{"10","etwas"}).validArgs(),"10 is a wrong term number. Choose 7 or 8.");
+        Assertions.assertEquals(new ArgsParser(new String[]{"-20","etwas"}).validArgs(),"-20 is a wrong term number. Choose 7 or 8.");
+        Assertions.assertEquals(new ArgsParser(new String[]{"-20","etwas","kkk"}).validArgs(),"Too many [3] arguments.");
 
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"8","10"}), "10 is not an available option.");
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"8","ab"}), "ab is not an available option.");
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"8","asjdaj"}), "asjdaj is not an available option.");
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"8","asjdaj","jjj"}), "Too many [3] arguments.");
+        Assertions.assertEquals(new ArgsParser(new String[]{"8","10"}).validArgs(), "10 is not an available option.");
+        Assertions.assertEquals(new ArgsParser(new String[]{"8","ab"}).validArgs(), "ab is not an available option.");
+        Assertions.assertEquals(new ArgsParser(new String[]{"8","asjdaj"}).validArgs(), "asjdaj is not an available option.");
+        Assertions.assertEquals(new ArgsParser(new String[]{"8","asjdaj","jjj"}).validArgs(), "Too many [3] arguments.");
 
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"7","a"}), "You need one argument more. Probably deputy's name is lacking.");
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"7","b"}), "You need one argument more. Probably deputy's name is lacking.");
+        Assertions.assertEquals(new ArgsParser(new String[]{"7","a"}).validArgs(), "You need one argument more. Probably deputy's name is lacking.");
+        Assertions.assertEquals(new ArgsParser(new String[]{"7","b"}).validArgs(), "You need one argument more. Probably deputy's name is lacking.");
 
-        Assertions.assertNotEquals(ArgsParser.validArgs(new String[]{"9","a"}), "You need one argument more. Probably deputy's name is lacking.");
-        Assertions.assertNotEquals(ArgsParser.validArgs(new String[]{"8","i"}), "You need one argument more. Probably deputy's name is lacking.");
-        Assertions.assertNotEquals(ArgsParser.validArgs(new String[]{"8","c"}), "You need one argument more. Probably deputy's name is lacking.");
+        Assertions.assertNotEquals(new ArgsParser(new String[]{"9","a"}).validArgs(), "You need one argument more. Probably deputy's name is lacking.");
+        Assertions.assertNotEquals(new ArgsParser(new String[]{"8","i"}).validArgs(), "You need one argument more. Probably deputy's name is lacking.");
+        Assertions.assertNotEquals(new ArgsParser(new String[]{"8","c"}).validArgs(), "You need one argument more. Probably deputy's name is lacking.");
 
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"7","b","Wypych"}), ("\"Wypych\" is not a right deputy's name."));
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"7","b","WyPYch"}), ("\"Wypych\" is not a right deputy's name."));
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"7","b","Ma³gorzata Anna Monika Wypych"}), ("\"Ma³gorzata Anna Monika Wypych\" is not a right deputy's name."));
+        Assertions.assertEquals(new ArgsParser(new String[]{"7","b","Wypych"}).validArgs(), ("\"Wypych\" is not a right deputy's name."));
+        Assertions.assertEquals(new ArgsParser(new String[]{"7","b","WyPYch"}).validArgs(), ("\"Wypych\" is not a right deputy's name."));
+        Assertions.assertEquals(new ArgsParser(new String[]{"7","b","Ma³gorzata Anna Monika Wypych"}).validArgs(), ("\"Ma³gorzata Anna Monika Wypych\" is not a right deputy's name."));
 
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"7","a","Robert Maciaszek","Chrzanów"}),"Too many [4] arguments.");
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"99","ii","Robert Maciaszek","Chrzanów","jjj"}),"Too many [5] arguments.");
+        Assertions.assertEquals(new ArgsParser(new String[]{"7","a","Robert Maciaszek","Chrzanów"}).validArgs(),"Too many [4] arguments.");
+        Assertions.assertEquals(new ArgsParser(new String[]{"99","ii","Robert Maciaszek","Chrzanów","jjj"}).validArgs(),"Too many [5] arguments.");
 
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"8","a","Ma³gorzata Wypych"}),"");
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"7","b","Ma³gorzata Wypych"}),"");
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"7","d"}),"");
-        Assertions.assertEquals(ArgsParser.validArgs(new String[]{"8","e"}),"");
+        Assertions.assertEquals(new ArgsParser(new String[]{"8","a","Ma³gorzata Wypych"}).validArgs(),"");
+        Assertions.assertEquals(new ArgsParser(new String[]{"7","b","Ma³gorzata Wypych"}).validArgs(),"");
+        Assertions.assertEquals(new ArgsParser(new String[]{"7","d"}).validArgs(),"");
+        Assertions.assertEquals(new ArgsParser(new String[]{"8","e"}).validArgs(),"");
 
     }
 

@@ -31,12 +31,12 @@ public class Application {
 
         try {
 
-            String m = ArgsParser.validArgs(args);
+            String m = new ArgsParser(args).validArgs();
             if(!m.isEmpty()) {
                 System.out.println(m);
                 return ;
             }
-            OptionsParser op = new OptionsParser(ArgsParser.parseArgs(args));
+            OptionsParser op = new OptionsParser(new ArgsParser(args).parseArgs());
             op.parseOptions();
 
 

@@ -55,7 +55,7 @@ public class ResultsPrinter {
                 System.out.println("Average value of sum of expenses of all deputies is "+this.result+" z³.");
                 break;
             case "d":
-                System.out.println("Most foreign trips "+this.results[1]+" had deputy "+this.results[0]);
+                System.out.println("Most foreign trips "+this.results[1]+" had deputy "+this.results[0]+".");
                 break;
             case "e":
                 System.out.println("Deputy "+this.results[0]+" from "+termNo+"th term spend most time "+this.results[1]+" days abroad.");

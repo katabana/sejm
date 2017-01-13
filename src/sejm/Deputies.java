@@ -5,7 +5,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -65,7 +64,7 @@ public class Deputies {
 
     public double avgSpendings() throws ParseException, IOException {
         double sum = 0;
-        double avgTmp = 0;
+        double avg = 0;
         int records = 0;
         for(int id : this.deputies.keySet()){
             JSONObject obj = ReaderFromURL.readExpensesFromUrl(id);
@@ -82,30 +81,29 @@ public class Deputies {
                         sum += Double.parseDouble(spent.get(j).toString());
                     }
                 }
-                avgTmp = (avgTmp * (records - 1) + sum) / records;
+                avg = (avg * (records - 1) + sum) / records;
                 sum = 0;
             }
         }
 
-        double avg = sum / records;
-        avg = (double) Math.round(avg * 100) / 100;      //rounding avg to two decimals
-        avgTmp = (double) Math.round(avgTmp * 100) / 100;
-        return avgTmp;
+        //rounding avg to two decimals
+        avg = (double) Math.round(avg * 100) / 100;
+        return avg;
     }
 
     public String[] getDeputyMostAbroadTrips() throws ParseException, IOException {
 
-        return Trips.findMostAbroadTrips(this.termNo, this.deputies);
+        return new Trips(this.termNo, this.deputies).findMostAbroadTrips();
     }
 
     public String[] getDeputyMostTimeAbroad() throws ParseException, IOException {
 
-        return Trips.findDeputyMostTimeAbroad(this.termNo, this.deputies);
+        return new Trips(this.termNo, this.deputies).findDeputyMostTimeAbroad();
     }
 
     public String[] getDeputyMostExpensiveTrip() throws ParseException, IOException {
 
-        return Trips.findDeputyMostExpensiveTrip(this.termNo, this.deputies);
+        return new Trips(this.termNo, this.deputies).findDeputyMostExpensiveTrip();
     }
 
     public ArrayList<String> deputiesBeenInItaly() throws ParseException, IOException {

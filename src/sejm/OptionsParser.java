@@ -40,7 +40,7 @@ public class OptionsParser {
                     new ResultsPrinter(this.termNo, this.deputy);
                     break;
                 }
-                float result = Deputy.getSpendings(this.deputyID, this.termNo);
+                float result = new Deputy(this.deputyID, this.termNo).getSpendings();
                 new ResultsPrinter(this.termNo,"a", this.deputy, result);
                 break;
             }
@@ -51,7 +51,7 @@ public class OptionsParser {
                     new ResultsPrinter(this.termNo, this.deputy);
                     break;
                 }
-                float result = Deputy.getOfficeSpendings(this.deputyID, this.termNo);
+                float result = new Deputy(this.deputyID, this.termNo).getOfficeSpendings();
                 new ResultsPrinter(this.termNo,"b", this.deputy, result);
                 break;
             }
